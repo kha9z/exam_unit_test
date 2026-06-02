@@ -8,6 +8,16 @@ describe('Cart', () => {
 		clearCart()
 	})
 
+	test('addToCart lägger till en ny produkt i kundvagnen', () => {
+		const itemCountBefore = getCartItemCount()
+		const input = { id: 1002, name: 'Vattenpistol', price: 40}
+
+		addToCart(input)
+		const itemCountAfter = getCartItemCount()
+
+		expect(itemCountAfter).toBe(itemCountBefore + 1)
+	})
+
 
 	// -------------------------------------------------- //
 	// Skriv dina testfall här
@@ -23,6 +33,17 @@ describe('Cart', () => {
 		const itemCountAfter = getCartItemCount()
 
 		expect(itemCountAfter).toBe(itemCountBefore + 1)
+	})
+
+	test('clearCart tömmer kundvagnen', () => {
+		const product = {
+			id: 1001,
+			name: 'Badanka',
+			price: 500
+		}
+		addToCart(product)
+		clearCart()
+		expect(getCartItemCount()).toBe(0)
 	})
 
 
