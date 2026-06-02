@@ -23,6 +23,9 @@ describe('Validation', () => {
 	})
 	*/
 
+test('returns true for a valid cart object', () => {
+	expect(isCartItem(exampleCartObject)).toBe(true)
+})
 
 	// ---------------------------------------------
 	// Följande testfall ska du implementera. Det är tillåtet att använda Joi. Gör i så fall ett schema för varje sorts objekt du vill kunna validera. Du får även ändra texten om du vill skriva på svenska i stället för engelska.
@@ -33,4 +36,33 @@ describe('Validation', () => {
 
 	// 3. it returns true for a valid product
 	// 4. it returns false for invalid cart objects
+})
+
+test('returns false for cart object without amount', () => {
+	const invalidCartObject = {
+		id: 2001,
+		item: exampleProduct
+	}
+	expect(isCartItem(invalidCartObject)).toBe(false)
+})
+
+ 
+test('returns false for cart object without id', () => {
+	const invalidCartObject = {
+		amount: 1,
+		item: exampleProduct
+	}
+	expect(isCartItem(invalidCartObject)).toBe(false)
+})
+
+test('returns true for a valid product', () => {
+	expect(isProduct(exampleProduct)).toBe(true)
+})
+
+test('returns false for a product without price', () => {
+	const invalidProduct = {
+		id: 1001,
+		name: 'Badanka'
+	}
+	expect(isProduct(invalidProduct)).toBe(false)
 })

@@ -42,7 +42,8 @@ function addToCart(newItem) {
 	if( !isProduct(newItem) ) {
 		return false
 	}
-
+	
+	
 	const newId = idCounter
 	const index = cart.findIndex(ci => ci.item.id === newItem.id)
 	if( index === -1 ) {
@@ -55,11 +56,8 @@ function addToCart(newItem) {
 	return true
 }
 
-
 function clearCart() {
-	throw new Error('Not implemented yet')
+	cart = []
 }
-
-
 
 export { getCartItemCount, addToCart, clearCart }
