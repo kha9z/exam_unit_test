@@ -1,5 +1,5 @@
 // importera här
-import { addToCart, getCartItemCount, clearCart, getItem } from "../cart"
+import { addToCart, getCartItemCount, clearCart, getItem, getTotalCartValue } from "../cart"
 
 
 describe('Cart', () => {
@@ -57,5 +57,21 @@ describe('Cart', () => {
 		expect(getItem(0).amount).toBe(2)
 	})
 
+	test('getTotalCartvalue returnerar summan av alla produkter i kundvagnen', () => {
+		const product1 = {
+			id: 1001,
+			name: 'Badanka', 
+			price: 500
+		}
+		const product2 = {
+			id: 1002,
+			name: 'Vattenpistol',
+			price: 40
+		}
+		addToCart(product1)
+		addToCart(product2)
+
+		expect(getTotalCartValue()).toBe(540)
+	})
 
 })

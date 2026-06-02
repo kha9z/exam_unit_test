@@ -64,4 +64,13 @@ function clearCart() {
 	cart = []
 }
 
-export { getCartItemCount, addToCart, clearCart, getItem }
+function getTotalCartValue() {
+	let total = 0
+
+	for (const cartItem of cart) {
+		total += cartItem.amount * cartItem.item.price
+	}
+	return total
+}
+
+export { getCartItemCount, addToCart, clearCart, getItem, getTotalCartValue }
