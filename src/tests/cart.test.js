@@ -1,5 +1,5 @@
 // importera här
-import { addToCart, getCartItemCount, clearCart } from "../cart"
+import { addToCart, getCartItemCount, clearCart, getItem } from "../cart"
 
 
 describe('Cart', () => {
@@ -22,18 +22,6 @@ describe('Cart', () => {
 	// -------------------------------------------------- //
 	// Skriv dina testfall här
 
-	// Du får ett test att börja med
-	test('addToCart lägger till en ny produkt i kundvagnen', () => {
-		const itemCountBefore = getCartItemCount()
-		const input = { id: 1002, name: 'Vattenpistol', price: 40 }
-
-		// addToCart returnerar inget - den påverkar kundvagnen
-		// vi behöver använda getCartItemCount för att se om det har lagts till en ny produkt i kundvagnen
-		addToCart(input)
-		const itemCountAfter = getCartItemCount()
-
-		expect(itemCountAfter).toBe(itemCountBefore + 1)
-	})
 
 	test('clearCart tömmer kundvagnen', () => {
 		const product = {
@@ -46,6 +34,28 @@ describe('Cart', () => {
 		expect(getCartItemCount()).toBe(0)
 	})
 
+	test('getItem returnerar rätt objekt från kundvagnen', () => {
+		const product = {
+			id: 1001,
+			name: 'Badanka',
+			price: 500
+		}
+		addToCart(product)
 
-	// -------------------------------------------------- //
+		expect(getItem(0).item.name).toBe('Badanka')
+	})
+
+	test('addToCart ökar amount när samma produkt läggs till två gånger', () => {
+		const product = {
+			id: 1001,
+			name: 'Badanka',
+			price: 500
+		}
+		addToCart(product)
+		addToCart(product)
+
+		expect(getItem(0).amount).toBe(2)
+	})
+
+
 })

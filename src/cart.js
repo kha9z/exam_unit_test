@@ -56,8 +56,12 @@ function addToCart(newItem) {
 	return true
 }
 
+function getItem(index) {
+	return cart[index]
+}
+
 function clearCart() {
 	cart = []
 }
 
-export { getCartItemCount, addToCart, clearCart }
+export { getCartItemCount, addToCart, clearCart, getItem }
