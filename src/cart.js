@@ -73,4 +73,16 @@ function getTotalCartValue() {
 	return total
 }
 
-export { getCartItemCount, addToCart, clearCart, getItem, getTotalCartValue }
+function removeFromCart(itemId) {
+	cart = cart.filter(ci => ci.id !== itemId)
+}
+
+function editCart(itemId, newValues) {
+	const item = cart.find(ci => ci.id === itemId)
+
+	if (item) {
+		Object.assign(item, newValues)
+	}
+}
+
+export { getCartItemCount, addToCart, clearCart, getItem, getTotalCartValue, removeFromCart, editCart }
