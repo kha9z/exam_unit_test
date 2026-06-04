@@ -14,7 +14,7 @@ describe('Cart', () => {
 
 	test('addToCart lägger till en ny produkt i kundvagnen', () => {
 		const itemCountBefore = getCartItemCount()
-		const input = { id: 1002, name: 'Vattenpistol', price: 40}
+		const input = { id: 1002, name: 'Vattenpistol', price: 40 }
 
 		addToCart(input)
 
@@ -60,7 +60,7 @@ describe('Cart', () => {
 	test('getTotalCartvalue returnerar summan av alla produkter i kundvagnen', () => {
 		const product1 = {
 			id: 1001,
-			name: 'Badanka', 
+			name: 'Badanka',
 			price: 500
 		}
 		const product2 = {
@@ -94,7 +94,7 @@ describe('Cart', () => {
 			price: 500
 		}
 		addToCart(product)
-		
+
 		const cartItemId = getItem(0).id
 
 		editCart(cartItemId, { amount: 5 })

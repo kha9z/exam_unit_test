@@ -5,16 +5,17 @@
 // 4. refactor as neccessary before you move on to the next
 // 5. repeat
 
+
+/**Kontrollera att objekten ser ut som förväntat */
+
 function isCartItem(maybeCartItem) {
-    if (
+    return (
         maybeCartItem.id !== undefined &&
         maybeCartItem.amount !== undefined &&
         maybeCartItem.item !== undefined
-    ) {
-        return true
-    }
-        return false
+    )
 }
+
 
 function isProduct(maybeProduct) {
     return (

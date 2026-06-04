@@ -17,7 +17,7 @@ Tips:
 // function clearCart()
 // -------------------------------------------------- //
 
-import { isCartItem, isProduct } from "./validation.js"
+import { isProduct } from "./validation.js"
 
 let cart = []
 let idCounter = 2002
@@ -29,24 +29,26 @@ let idCounter = 2002
 // Kom ihåg att börja med testfallet - inte koden
 
 
-function getCartItemCount() {
-	return cart.length
-}
 
 
 /**
  * Lägger till en "product" till kundvagnen.
  * @returns true om produkten lades till, false om parametern inte är ett korrekt objekt
- */
+*/
+
+function getCartItemCount() {
+	return cart.length
+}
+
 function addToCart(newItem) {
-	if( !isProduct(newItem) ) {
+	if (!isProduct(newItem)) {
 		return false
 	}
-	
-	
-	const newId = idCounter
+
+
+	// const newId = idCounter //används inte
 	const index = cart.findIndex(ci => ci.item.id === newItem.id)
-	if( index === -1 ) {
+	if (index === -1) {
 		const cartItem = { id: idCounter, amount: 1, item: newItem }
 		idCounter++
 		cart.push(cartItem)
@@ -60,10 +62,7 @@ function getItem(index) {
 	return cart[index]
 }
 
-function clearCart() {
-	cart = []
-}
-
+//går igenom alla produkter och tar amount * price för varje
 function getTotalCartValue() {
 	let total = 0
 
@@ -73,10 +72,12 @@ function getTotalCartValue() {
 	return total
 }
 
+// tar bort  objekt från kundvagnen på id, behåller cart items utom angivet it
 function removeFromCart(itemId) {
 	cart = cart.filter(ci => ci.id !== itemId)
 }
 
+// Hittar ett cart item och updaterar dess värden
 function editCart(itemId, newValues) {
 	const item = cart.find(ci => ci.id === itemId)
 
@@ -85,4 +86,7 @@ function editCart(itemId, newValues) {
 	}
 }
 
+function clearCart() {
+	cart = []
+}
 export { getCartItemCount, addToCart, clearCart, getItem, getTotalCartValue, removeFromCart, editCart }
