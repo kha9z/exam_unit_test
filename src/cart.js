@@ -77,14 +77,15 @@ function removeFromCart(itemId) {
 	cart = cart.filter(ci => ci.id !== itemId)
 }
 
-// Hittar ett cart item och updaterar dess värden
+
 function editCart(itemId, newValues) {
 	const item = cart.find(ci => ci.id === itemId)
 
-	if (item) {
+	if (!item) {
+		throw new Error('Produkten finns inte i kundvagnen')
+	}
 		Object.assign(item, newValues)
 	}
-}
 
 function clearCart() {
 	cart = []
