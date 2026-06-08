@@ -64,4 +64,23 @@ describe('Validation', () => {
 		}
 		expect(isProduct(invalidProduct)).toBe(false)
 	})
+
+	test('returns false for cart object with negative amount', () => {
+		const invalidCartObject = {
+			id: 2001,
+			amount: -1,
+			item: exampleProduct
+		}
+		expect(isCartItem(invalidCartObject)).toBe(false)
+	})
+
+	test('returns false for product with negative price', () => {
+		const invalidProduct = {
+			id: 1001,
+			name: 'Badanka',
+			price: -500
+		}
+
+		expect(isProduct(invalidProduct)).toBe(false)
+	})
 })

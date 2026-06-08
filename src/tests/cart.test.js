@@ -75,7 +75,7 @@ describe('Cart', () => {
 		expect(getItem(0).amount).toBe(2)
 	})
 
-	test('getTotalCartvalue returnerar summan av alla produkter i kundvagnen', () => {
+	test('getTotalCartValue returnerar summan av alla produkter i kundvagnen', () => {
 		const product1 = {
 			id: 1001,
 			name: 'Badanka',
@@ -87,8 +87,9 @@ describe('Cart', () => {
 			price: 40
 		}
 		addToCart(product1)
+		addToCart(product1)
 		addToCart(product2)
-		expect(getTotalCartValue()).toBe(540)
+		expect(getTotalCartValue()).toBe(1040)
 	})
 
 	test('editCart ändrar amount på en produkt', () => {
@@ -108,7 +109,7 @@ describe('Cart', () => {
 
 	test('editCart kastsr error om itemId inte finns', () => {
 		expect(() => {
-			editCart(9999, { amount: 5 })
+			editCart(9999, {})
 		}).toThrow('Produkten finns inte i kundvagnen')
 	})
 

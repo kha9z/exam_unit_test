@@ -10,18 +10,21 @@
 
 function isCartItem(maybeCartItem) {
     return (
-        maybeCartItem.id !== undefined &&
-        maybeCartItem.amount !== undefined &&
-        maybeCartItem.item !== undefined
+        typeof maybeCartItem.id == 'number' &&
+        typeof maybeCartItem.amount == 'number' &&
+        maybeCartItem.amount > 0 &&
+        isProduct(maybeCartItem.item)
     )
 }
 
 
 function isProduct(maybeProduct) {
     return (
-        maybeProduct.id !== undefined &&
-        maybeProduct.name !== undefined &&
-        maybeProduct.price !== undefined
+        typeof maybeProduct.id === 'number' &&
+        typeof maybeProduct.name === 'string' &&
+        maybeProduct.name.length > 0 &&
+        typeof maybeProduct.price === 'number' &&
+        maybeProduct.price > 0
     )
 
 }
